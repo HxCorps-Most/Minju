@@ -1,2 +1,2 @@
-#### Minju
-![capture](./capture.png)
+## Capture 
+
