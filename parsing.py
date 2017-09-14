@@ -7,13 +7,15 @@ from bs4 import  BeautifulSoup
 soup = BeautifulSoup(urllib.request.urlopen("https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EA%B0%95%EB%AF%BC%EC%A3%BC"
 ), 'html5lib')
 
-#get each text from the code
+#parsing related keywords
 related_keywords_soup = soup.find(id="nx_related_keywords").find('dd')
 related_keywords_list = related_keywords_soup.find_all('a')
 related_keywords = []
 for list in related_keywords_list :
     keyword = list.string
     related_keywords.append(keyword)
+
+#parsing news topic
 
 news_topic_soup1 = soup.find(id="nxfr_htp").div
 news_topic_soup2 = news_topic_soup1.next_sibling.next_sibling
@@ -30,6 +32,8 @@ for list in news_topic_list1 :
 for list in news_topic_list2 :
     keyword = list.string
     news_topic_entertain.append(keyword)
+
+#parsing target
 
 target_soup = soup.find(id="nxfr_ugrank").div.next_sibling.next_sibling
 target = soup.find(id="nxfr_ugrank").div.h2.string
