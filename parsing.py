@@ -7,10 +7,15 @@ from bs4 import  BeautifulSoup
 soup = BeautifulSoup(urllib.request.urlopen("https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EA%B0%95%EB%AF%BC%EC%A3%BC"
 ), 'html5lib')
 
+if soup == null :
+    print("error")
+
+
 #parsing related keywords
 related_keywords_soup = soup.find(id="nx_related_keywords").find('dd')
 related_keywords_list = related_keywords_soup.find_all('a')
 related_keywords = []
+
 for list in related_keywords_list :
     keyword = list.string
     related_keywords.append(keyword)
@@ -44,9 +49,23 @@ for list in target_list :
     keyword = list.string
     target_favor.append(keyword)
 
+if related_keywords == null:
+    print("연관검색어 : error")
+else :
+    print("연관검색어 :", related_keywords)
 
-print("연관검색어 :", related_keywords)
-print("뉴스토픽 뉴스 :", news_topic_news)
-print("뉴스토픽 연예,스포츠 :", news_topic_entertain)
-print(target ,":", target_favor)
+if news_topic_news == null:
+    print("뉴스토픽 뉴스 : error")
+else :
+    print("뉴스토픽 뉴스 :", news_topic_news)
+
+if news_topic_entertain == null:
+    print("뉴스토픽 연예,스포츠 : error")
+else :
+    print("뉴스토픽 연예,스포츠 :", news_topic_entertain)
+
+if target == null or target_favor ==  null :
+    print("연령대별 검색어 : error")
+else :
+    print(target, ":", target_favor)
 
