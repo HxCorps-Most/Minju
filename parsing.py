@@ -7,7 +7,7 @@ from bs4 import  BeautifulSoup
 soup = BeautifulSoup(urllib.request.urlopen("https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EA%B0%95%EB%AF%BC%EC%A3%BC"
 ), 'html5lib')
 
-if soup == null :
+if soup == None :
     print("error")
 
 
@@ -49,22 +49,22 @@ for list in target_list :
     keyword = list.string
     target_favor.append(keyword)
 
-if related_keywords == null:
+if related_keywords == None :
     print("연관검색어 : error")
 else :
     print("연관검색어 :", related_keywords)
 
-if news_topic_news == null:
+if news_topic_news == None :
     print("뉴스토픽 뉴스 : error")
 else :
     print("뉴스토픽 뉴스 :", news_topic_news)
 
-if news_topic_entertain == null:
+if news_topic_entertain == None:
     print("뉴스토픽 연예,스포츠 : error")
 else :
     print("뉴스토픽 연예,스포츠 :", news_topic_entertain)
 
-if target == null or target_favor ==  null :
+if target == None or target_favor ==  None :
     print("연령대별 검색어 : error")
 else :
     print(target, ":", target_favor)
